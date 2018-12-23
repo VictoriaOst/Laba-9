@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function f24(str) {
+			var arr = str.split(' ');
+			for(var i = 0; i < arr.length; i++) {
+				if (arr[i] === '') {
+					arr.splice(i,1);
+					i--; 
+				}
+			}
+			/*arr = arr.map(function (item) {
+				return parseFloat(item);
+			});*/
+			arr.forEach(function (item, i, arr) {
+				arr[i] = parseFloat(item);
+			});
+			/*for (var i = 0; i < arr.length; i++) {
+				arr[i] = parseFloat(arr[i]);
+			}*/
+			return arr.sort(function (a,b) {
+				return a-b;
+			});
+		}
+
+		console.log(f24('10 5 2 3 4   8'));
+
+		function f25(str) {
+			var arr  = str.split(' '),
+				arr1 = [];
+			for (var i = 0; i < arr.length; i++) {
+				if(arr[i].length > 0) arr1.push(arr[i]);
+			}
+			arr = arr1;
+			arr1 = [];
+			var max = { l: 0, word: '' };
+			for (var i = 0; i < arr.length; i+=2) {
+				arr1.push(arr[i]);
+				if (arr[i].length > max.l) {
+					max.l = arr[i].length;
+					max.word = arr[i];
+				}
+			}
+			str = arr1.join(' ');
+			return max['word'];
+			// return max.word;
+		}
+
+		console.log(f25('ckck sce    ks cj   b m k   edj   '));
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>
